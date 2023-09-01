@@ -1,0 +1,20 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+{% block titulo %}
+  Agregar Empleado
+{% endblock titulo %}
+
+{% block contenido %}
+    <h2> Agregar un Empleado!! </h2>
+    <form action="" method="post">
+        {% csrf_token %}
+       <p> Nombre:  <input type="text" name="nombre" id="nombre"></p>
+       <p> Apellido:  <input type="text" name="apellido" id="apellido"></p>
+       <p> Edad: <input type="number" name="edad" id="edad"></p>
+       <p> Trabajo:  <input type="text" name="trabajo" id="trabajo"></p>
+       <p> Sueldo: <input type="number" name="sueldo" id="sueldo"> $ </p>
+       <input type="submit" value="Enviar">
+
+    </form>
+    {% endblock contenido %}

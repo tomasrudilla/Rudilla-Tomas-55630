@@ -1,0 +1,18 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+{% block titulo %}
+  Agregar Turno
+{% endblock titulo %}
+
+{% block contenido %}
+    <h2> Agregar un Turno!! </h2>
+    <form action="" method="post">
+        {% csrf_token %}
+       <p> Paciente:  <input type="text" name="nombre" id="nombre"></p>
+       <p> Dni:  <input type="number" name="dni" id="dni"></p>
+       <p> Turno:  <input type="text" name="fecha" id="fecha"> </p>
+       <input type="submit" value="Enviar">
+
+    </form>
+    {% endblock contenido %}

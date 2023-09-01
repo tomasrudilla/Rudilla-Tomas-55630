@@ -1,0 +1,42 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+{% block titulo %}
+  Pagina de Turnos
+{% endblock titulo %}
+
+{% block contenido %}
+   <h1> {{ titulo|upper }} {% now " d / m /  Y " %} </h1>
+
+   <h4> Cantidad de Turnos en la tabla {{turnos|length}}</h4>
+
+   <table class="table table-striped">
+      <thead>
+           <tr>
+               <th> Id </th>
+               <th> Nombre </th>
+               <th> Dni </th>
+               <th> Turno </th>
+           </tr>
+      </thead>
+      <tbody>
+   
+   {% for c in turnos  %}
+  
+   <tr>
+       <td> {{ c.id }} </td>
+       <td> {{ c.nombre }} </td>
+       <td> {{ c.dni }} </td>
+       <td> {{ c.fecha|date:"d/m/Y" }} </td>
+   </tr>
+
+   {% endfor %}
+  </tbody>   
+  </table>
+
+
+  
+   
+ 
+    
+{% endblock contenido %}

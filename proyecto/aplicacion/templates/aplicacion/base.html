@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {%load static %}
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title> Final Python </title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap Icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <!-- SimpleLightbox plugin CSS-->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+        <link href="{% static 'aplicacion/css/styles.css' %}" rel="stylesheet" />
+        <!--  Font Awesome   -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                {% if user.is_authenticated %}
+                <a class="navbar-brand" href="{% url 'editar_perfil' %}"> Perfil </a>
+                <div class="text-center">
+                    <img src="{{request.session.avatar}}" height="40px" weight="40px" /> 
+                </div>
+                {% endif %}
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto my-2 my-lg-0">
+
+                        {% if user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'home' %}"> Inicio </a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'medicos' %}">Medicos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'pacientes' %}">Pacientes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'turnos' %}">Turnos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'empleados' %}">Empleados</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'info' %}">  Acerca de mi  </a></li>
+                        {% else %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'home' %}"> Inicio </a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'info' %}">  Acerca de mi  </a></li>
+                        {% endif %}
+         
+                    </ul>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container px-4 px-lg-5 h-100">
+                <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+                    <div class="col-lg-8 align-self-end">
+                        <h1 class="text-white font-weight-bold"> Final Python </h1>
+                        {% block titulo %}
+
+                        {% endblock titulo %}
+                        <hr class="divider" />
+                    </div>
+                    <div class="col-lg-8 align-self-baseline">
+                        <p class="text-white-75 mb-5"> CoderHouse</p>
+                        
+
+                        {% if user.is_authenticated %}
+                            
+                            <p style="color:orange"> Bienvenido:  {{ user.username }}!</p>
+                            <a class="btn btn-primary btn-xl" href="{% url 'logout' %}"> Cerrar sesión </a>
+                        {% else %}
+                             <a class="btn btn-success" href="{% url 'registro' %}">Registrarse </a>
+                            <a class="btn btn-primary btn-xl" href="{% url 'login' %}"> Iniciar sesión </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </header>
+        {% block contenido %}
+
+        {% endblock contenido %}
+        <!-- Footer-->
+        <footer class="bg-light py-5">
+            <div class="container px-4 px-lg-5"><div class="small text-center text-muted"> Final &copy; 2023 - Coderhouse</div></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- SimpleLightbox plugin JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
+        <!-- Core theme JS-->
+        
+        <script src="{% static 'js/scripts.js' %}"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
+</html>

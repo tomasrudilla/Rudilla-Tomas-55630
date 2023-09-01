@@ -1,0 +1,42 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+{% block titulo %}
+    Empleados
+{% endblock titulo %}
+
+{% block contenido %}
+    <h2> Empleado </h2>
+    <form action="" method="post">
+        <table class="table table-striped">
+            <thead>
+                 <tr>
+                     <th> Nombre </th>
+                     <th> Apellido </th>
+                     <th> Edad </th>
+                     <th> Trabajo </th>
+                     <th> Sueldo </th>
+                 </tr>
+            </thead>
+            <tbody>
+         <tr>
+             <td> {{ form.nombre }} </td>
+             <td> {{ form.apellido }} </td>
+             <td> {{ form.edad }} </td>
+             <td> {{ form.trabajo }} </td>
+             <td> {{ form.sueldo }} &#36; </td>
+         </tr>
+        </tbody>
+        </table>
+        {% csrf_token %}
+       <table>
+        
+        
+        
+        
+        
+
+       </table>
+       <input type="submit" value="Enviar">
+    </form>
+    {% endblock contenido %}

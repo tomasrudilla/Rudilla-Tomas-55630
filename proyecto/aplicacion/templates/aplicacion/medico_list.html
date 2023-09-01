@@ -1,0 +1,52 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+{% block titulo %}
+  Medicos
+{% endblock titulo %}
+
+{% block contenido %}
+  <table>
+    <tr>
+      <td width="200"><h2> Medicos </h2></td>
+      <td>
+        <a href="{% url 'create_medico'  %}" class="btn btn-primary btn-sm">
+          <i class="fa fa-plus fa-lg" title="New Record"></i>
+        </a>
+      </td>
+    </tr>
+  </table>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th> Apellido </th>
+        <th> Dni </th>
+        <th> Especialidad </th>
+        <th> Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for medico in medico_list %}
+        <tr>
+          <td>{{ medico.id }}</td>
+          <td>{{ medico.nombre }}</td>
+          <td>{{ medico.apellido }}</td>
+          <td> {{ medico.dni }} </td>
+          <td> {{ medico.especialidad }} </td>
+          
+          <td>
+            <a href="{% url 'update_medico' medico.id %}" class="btn btn-primary" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: 1rem;">
+              <i class="fa fa-edit fa-sm" title="Edit "></i>
+            </a>
+            <a href="{% url 'delete_medico' medico.id %}" class="btn btn-danger" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: 1rem;">
+              <i class="fa fa-trash fa-sm" title="Delete "></i>
+            </a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock contenido %}
